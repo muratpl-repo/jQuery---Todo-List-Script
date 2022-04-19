@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+        .listeElemani {
+            margin-left: 10px;
+            background: white;
+            color: red;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Yapilacaklar Listesi</h1>
+    <input type="text" placeholder="Yeni bir yapilacak">
+    <button id="eklemeButonu">Ekle</button>
+    <ol id="Listemiz"></ol>
+
+    <script>
+        $(function(){
+            $("#eklemeButonu").on("click", function () {
+                var inputDeger = $("input").val();
+                if(inputDeger !=""){
+                    var ListeItem = $("<li></li>").text(inputDeger);
+                    $(ListeItem).append("<button class = \"listeElemani\">X</button>");
+                    $("#Listemiz").append(ListeItem);
+                    $("input").val("");
+                    $(".listeElemani").on("click",function(){
+                        $(this).parent().remove();
+                    });
+                }
+
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
